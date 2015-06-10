@@ -27,6 +27,7 @@ class PostsController < ApplicationController
 
   def edit
   @post = Post.find(params[:id])
+  @tags = @post.tags.map(&:name).join(", ")
   render :edit
   end
 
@@ -34,7 +35,7 @@ class PostsController < ApplicationController
   def update
 
 
-  tags = params['tags'].split(", ")
+  tags = params[:tags].split(", ")
   @post = Post.find(params['id'])
   @post.update(title: params[:title],
               content: params[:content],
