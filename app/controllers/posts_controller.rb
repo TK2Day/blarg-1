@@ -35,11 +35,14 @@ class PostsController < ApplicationController
   def update
 
 
-  tags = params[:tags].split(", ")
+
   @post = Post.find(params['id'])
+  tags = params[:tags].split(", ")
+  tag_models = tags.map { |tag| Tag.find_or_create_by(name: tag) }
   @post.update(title: params[:title],
               content: params[:content],
-              written_at: DateTime.now)
+              written_at: DateTime.now,
+              tags: tag_models)
 
     redirect_to post_path(@post)
   end
