@@ -33,9 +33,6 @@ class PostsController < ApplicationController
 
 
   def update
-
-
-
   @post = Post.find(params['id'])
   tags = params[:tags].split(", ")
   tag_models = tags.map { |tag| Tag.find_or_create_by(name: tag) }
@@ -46,6 +43,13 @@ class PostsController < ApplicationController
 
     redirect_to post_path(@post)
   end
+
+  # def delete
+  #   @post = Post.find(params[:id])
+  #   @post.destroy
+  #   redirect_to posts_path
+  # end
+
 
   protected
   def get_page(n)
