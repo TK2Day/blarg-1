@@ -3,7 +3,7 @@
 <% # Title, Tags, Text %>
 <!-- Title, Tags, Text -->
 
-<%= form_tag('/posts', class: 'post-form') do %>
+<%= form_tag('/posts', method: :patch, class: 'post-form') do %>
   <div class="post-input">
     <%= label_tag(:title, "Title: ") %>
     <%= text_field_tag(:title, @post.title, size: 40) %>

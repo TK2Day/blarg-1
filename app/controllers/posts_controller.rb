@@ -27,9 +27,22 @@ class PostsController < ApplicationController
 
   def edit
   @post = Post.find(params[:id])
-
+  render :edit
   end
 
+
+  def update
+
+  @post = Post.find(params[:id])
+  tags = params['tags'].split(", ")
+
+
+  post.update(title: params[:title],
+              content: params[:content],
+              written_at: DateTime.now)
+
+    redirect_to posts_path(@post)
+  end
 
   protected
   def get_page(n)
@@ -37,3 +50,6 @@ class PostsController < ApplicationController
     Post.order(written_at: :desc).offset(page_offset).limit(10)
   end
 end
+
+#<!-- <%= link_to ‘Delete’, post_path(post) %> -->
+# ^^literally will not accept this as a comment in post.html.erb as a comment No idea why.

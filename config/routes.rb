@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 
 #need 2 routes for hw
   get 'post/:id/edit', to: 'posts#edit', as: 'posts_edit'
+  patch 'posts', to: 'posts#update'
 
   get 'post/:id', to: 'posts#show', as: 'post'
   get 'posts', to: 'posts#index'
