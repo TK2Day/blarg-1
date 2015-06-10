@@ -33,15 +33,14 @@ class PostsController < ApplicationController
 
   def update
 
-  @post = Post.find(params[:id])
+
   tags = params['tags'].split(", ")
-
-
-  post.update(title: params[:title],
+  @post = Post.find(params['id'])
+  @post.update(title: params[:title],
               content: params[:content],
               written_at: DateTime.now)
 
-    redirect_to posts_path(@post)
+    redirect_to post_path(@post)
   end
 
   protected
