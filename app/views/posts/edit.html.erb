@@ -1,4 +1,4 @@
-<h2>New Post</h2>
+<h2>Edit Post</h2>
 
 <% # Title, Tags, Text %>
 <!-- Title, Tags, Text -->
@@ -6,22 +6,22 @@
 <%= form_tag('/posts', class: 'post-form') do %>
   <div class="post-input">
     <%= label_tag(:title, "Title: ") %>
-    <%= text_field_tag(:title, nil, size: 40) %>
+    <%= text_field_tag(:title, @post.title, size: 40) %>
   </div>
 
   <div class="post-input">
     <%= label_tag(:tags, "Tags: ") %>
-    <%= text_field_tag(:tags, nil, size: 40) %>
+    <%= text_field_tag(:tags, @post.tags, size: 40) %>
   </div>
 
   <div class="post-input">
     <%= label_tag(:content, "Content: ") %>
     <br/>
-    <%= text_area_tag(:content, nil, rows: 40, cols: 80) %>
+    <%= text_area_tag(:content, @post.content, rows: 40, cols: 80) %>
   </div>
 
   <br/>
-  <div><%= submit_tag 'Save' %></div>
+  <div><%= submit_tag 'Update' %></div>
 <% end %>
 
 <br/>

@@ -25,6 +25,12 @@ class PostsController < ApplicationController
     # redirect_to post_path(@post)
   end
 
+  def edit
+  @post = Post.find(params[:id])
+
+  end
+
+
   protected
   def get_page(n)
     page_offset = (n - 1) * 10
